@@ -7,6 +7,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 import subprocess, os, sys, threading, requests, numpy as np, pandas as pd, datetime as dt, math, traceback
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/analysis", StaticFiles(directory="analysis"), name="analysis")
 
 # ------------------- Create FastAPI app -------------------
 app = FastAPI(title="BTC AI Dashboard API", version="2.2")
@@ -617,3 +620,4 @@ async def refresh_visuals():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app_fastapi:app", host="127.0.0.1", port=8000, reload=True)
+
