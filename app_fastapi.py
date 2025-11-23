@@ -9,7 +9,15 @@ from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 import subprocess, os, sys, threading, requests, numpy as np, pandas as pd, datetime as dt, math, traceback
 from fastapi.staticfiles import StaticFiles
 
+app = FastAPI()
+
+# ---- NOW mount your folders ----
 app.mount("/analysis", StaticFiles(directory="analysis"), name="analysis")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+def home():
+    return {"status": "Backend Running 🚀"}
 
 # ------------------- Create FastAPI app -------------------
 app = FastAPI(title="BTC AI Dashboard API", version="2.2")
@@ -620,4 +628,5 @@ async def refresh_visuals():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app_fastapi:app", host="127.0.0.1", port=8000, reload=True)
+
 
