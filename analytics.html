@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BTC AI Analysis Output</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======== NAVBAR ======== -->
+<nav class="topbar">
+    <div class="brand">💹 BTC AI Dashboard</div>
+
+    <div class="navlinks">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="strategy.html">Strategy Tester</a>
+        <a href="analytics.html">Analytics</a>
+    </div>
+
+    <div class="controls-row">
+        <button id="refresh-all" class="glow-btn">🔄 Refresh</button>
+        <button id="retrain-model" class="glow-btn">⚙️ Retrain</button>
+        <button id="download-logs" class="glow-btn">⬇ Logs</button>
+    </div>
+</nav>
+
+<!-- ======== MAIN CONTAINER ======== -->
+<div class="analysis-container-full">
+    <h1 style="text-align:center;">📊 BTC AI — Live Strategy Output</h1>
+
+    <div class="analysis-grid">
+
+        <!-- LEFT SECTION -->
+        <div>
+
+            <div class="card-box">
+                <div class="section-title">Equity Curve</div>
+                <div class="img-box">
+                    <img id="equity-img" src="analysis/equity_curve_small.png" 
+                         style="width:100%; height:240px; object-fit:contain;">
+                    <div class="small-note">Auto-updated every 60 seconds</div>
+                </div>
+            </div>
+
+            <div class="card-box">
+                <div class="section-title">Win / Loss Pie</div>
+                <div class="img-box">
+                    <img id="pie-img" src="analysis/winloss_pie_small.png" 
+                         style="width:180px;height:180px; object-fit:contain;">
+                    <div class="small-note">Based on strategy output</div>
+                </div>
+            </div>
+
+            <div class="card-box">
+                <div class="section-title">Strategy Stats</div>
+                <div class="metric-row">
+                    <span>📈 Latest Balance</span>
+                    <span id="recent-balance" class="win">$0.00</span>
+                </div>
+                <div class="metric-row">
+                    <span>🏆 Win Rate</span>
+                    <span id="win-rate">—</span>
+                </div>
+                <div class="metric-row">
+                    <span>⏰ Best Hour to Trade</span>
+                    <span id="best-hour">—</span>
+                </div>
+                <div class="metric-row">
+                    <span>💰 Top Profit Trade</span>
+                    <span id="top-pnl">—</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SECTION -->
+        <div>
+            <div class="card-box">
+                <div class="section-title">Model Training Log</div>
+                <div id="train-log" class="log-box">No logs yet...</div>
+            </div>
+
+            <div class="card-box">
+                <div class="section-title">Top Trades</div>
+                <table id="top-trades">
+                    <thead>
+                        <tr>
+                            <th>Entry</th>
+                            <th>Exit</th>
+                            <th>Dir</th>
+                            <th>PnL%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align:center; opacity:0.6;">No trades yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
