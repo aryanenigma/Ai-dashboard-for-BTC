@@ -9,58 +9,71 @@
 </head>
 
 <body>
+  
   <!-- ===== NAVBAR ===== -->
   <nav class="topbar">
     <div class="brand">💹 BTC AI Dashboard</div>
+
+
     <div class="navlinks">
       <a href="index.html">Dashboard</a>
       <a href="strategy.html" class="active">Strategy Tester</a>
       <a href="analytics.html">Analytics</a>
     </div>
+
     <div class="controls">
-      <button id="refresh-ai">🔄 Refresh</button>
+      <button id="refresh-ai" class="glow-btn">🔄 Refresh</button>
     </div>
   </nav>
 
-  <!-- ===== MAIN CONTAINER ===== -->
-  <main class="container single-col">
-    <div class="card">
+  <!-- ===== CONTENT WRAPPER ===== -->
+  <main class="content">
+
+    <!-- Strategy Card -->
+    <section class="panel">
       <h2>⚙️ Smart BTC Breakout Strategy</h2>
       <p class="muted">
-        Rules: Max 2 trades/day • Profit Target 3–5% (default 4%) • Stop Loss 10–12% (default 10%) •
-        Entry: opposite candle breaks previous candle • Indicators: RSI + ema10 • Filters: avoid range & near S/R
+        Max 2 trades/day • Target 3–5% • Stop Loss 10–12% • Uses RSI + ema10 • Avoids consolidation zones
       </p>
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-        <button id="simulate-btn">▶️ Run Strategy Simulation (10m)</button>
-        <div id="sim-status" class="muted">No simulation run yet</div>
+      <div class="action-panel">
+        <button id="simulate-btn" class="action-btn">▶️ Run Simulation</button>
+        <div id="sim-status" class="muted small-text">Status: Idle</div>
       </div>
 
-      <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
-        <div class="card small"><strong>Initial</strong><div id="sim-initial">$0</div></div>
-        <div class="card small"><strong>Final</strong><div id="sim-final">$0</div></div>
-        <div class="card small"><strong>Return</strong><div id="sim-return">0%</div></div>
-        <div class="card small"><strong>Trades</strong><div id="sim-trades">0</div></div>
-        <div class="card small"><strong>Win Rate</strong><div id="sim-win">0%</div></div>
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-box"><span>Initial</span><strong id="sim-initial">$0</strong></div>
+        <div class="stat-box"><span>Final</span><strong id="sim-final">$0</strong></div>
+        <div class="stat-box"><span>Return</span><strong id="sim-return">0%</strong></div>
+        <div class="stat-box"><span>Trades</span><strong id="sim-trades">0</strong></div>
+        <div class="stat-box"><span>Win Rate</span><strong id="sim-win">0%</strong></div>
       </div>
+    </section>
 
-      <!-- ===== Profit Projection ===== -->
-      <div class="card" style="margin-top:20px;">
-        <h3>📊 Profit Projection</h3>
-        <p class="muted">Shows expected gain/loss if executing trades as per your strategy.</p>
-        <div id="projection-summary">No data yet.</div>
-        <div id="projection-chart"></div>
-      </div>
+    <!-- Projection -->
+    <section class="panel">
+      <h3>📊 Profit Projection</h3>
+      <p class="muted">Projected balance based on strategy rules & conditions.</p>
+      <div id="projection-summary" class="summary-box">No data yet</div>
+      <div id="projection-chart" class="chart"></div>
+    </section>
 
-      <!-- ===== Main Charts ===== -->
-      <div id="strategy-chart" class="chart-area" style="margin-top:20px;height:360px;"></div>
-      <div id="rsi-chart" class="chart-area" style="margin-top:12px;height:140px;"></div>
+    <!-- Main Chart -->
+    <section class="panel">
+      <h3>📈 Price Chart</h3>
+      <div id="strategy-chart" class="chart large"></div>
+      <div id="rsi-chart" class="chart small" style="margin-top:10px;"></div>
+    </section>
 
-      <!-- ===== Trades Table ===== -->
-      <div id="strategy-trades-table" style="margin-top:16px;max-height:340px;overflow:auto;"></div>
-    </div>
+    <!-- Trades Table -->
+    <section class="panel">
+      <h3>📄 Trades</h3>
+      <div id="strategy-trades-table" class="scroll-area"></div>
+    </section>
+
   </main>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
